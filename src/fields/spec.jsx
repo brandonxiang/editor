@@ -75,6 +75,7 @@ export class PropertyGroup extends React.Component {
   }
 
 	render() {
+		console.log(GlSpec)
 		const layerTypeSpec = GlSpec[this.props.groupType + "_" + this.props.layerType]
 		const specFields = Object.keys(layerTypeSpec).map(propName => {
 			const fieldSpec = layerTypeSpec[propName]
