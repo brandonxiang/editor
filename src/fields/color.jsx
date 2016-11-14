@@ -4,19 +4,19 @@ import { ChromePicker } from 'react-color'
 
 /*** Number fields with support for min, max and units and documentation*/
 class ColorField extends React.Component {
-state={
-	displayColorPicker:false,
-}
+	state = {
+		displayColorPicker: false,
+	}
 
- handleClick = () => {
-            this.setState({ displayColorPicker: !this.state.displayColorPicker })
-        };
+	handleClick = () => {
+		this.setState({ displayColorPicker: !this.state.displayColorPicker })
+	};
 
-        handleClose = () => {
-            this.setState({ displayColorPicker: false })
-        };
+	handleClose = () => {
+		this.setState({ displayColorPicker: false })
+	};
 
-static propTypes = {
+	static propTypes = {
     onChange: React.PropTypes.func.isRequired,
 		name: React.PropTypes.string.isRequired,
     value: React.PropTypes.string,
@@ -26,21 +26,21 @@ static propTypes = {
 
 	onChange(e) {
 		const value = e.target.value
-		return this.props.onChange(value === "" ? null: value)
+		return this.props.onChange(value === "" ? null : value)
 	}
 
 	render() {
 		const popover = {
-                position: 'absolute',
-                zIndex: '2',
-            }
-            const cover = {
-                position: 'fixed',
-                top: '0px',
-                right: '0px',
-                bottom: '0px',
-                left: '0px',
-            }
+			position: 'absolute',
+			zIndex: '2',
+		}
+		const cover = {
+			position: 'fixed',
+			top: '0px',
+			right: '0px',
+			bottom: '0px',
+			left: '0px',
+		}
 		return <div style={inputStyle.property}>
 			<label style={inputStyle.label}>{this.props.name}</label>
 			<input
@@ -48,15 +48,15 @@ static propTypes = {
 				name={this.props.name}
 				placeholder={this.props.default}
 				value={this.props.value ? this.props.value : ""}
-				onChange={this.onChange.bind(this)}
+				onChange={this.onChange.bind(this) }
 				onClick ={ this.handleClick }
-			/>
+				/>
 			{this.state.displayColorPicker ? < div style = { popover } >
         < div style = { cover }
-        onClick = { this.handleClose }/> < ChromePicker / >
-        < /div> : null } 
-		</div>
+					onClick = { this.handleClose }/> < ChromePicker / >
+        < /div>: null }
+			</div>
 	}
-}
+			}
 
-export default ColorField
+			export default ColorField
