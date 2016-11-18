@@ -1,6 +1,5 @@
 import React from 'react'
 import inputStyle from './input.js'
-import { InputNumber } from 'antd';
 
 /*** Number fields with support for min, max and units and documentation*/
 class NumberField extends React.Component {
@@ -27,13 +26,10 @@ class NumberField extends React.Component {
 	render() {
 		return <div style={inputStyle.property}>
 			<label style={inputStyle.label}>{this.props.name}</label>
-			<InputNumber
+			<input
 				style={inputStyle.input}
 				type="number"
 				name={this.props.name}
-			    min={this.props.min}
-                max={this.props.max}
-                defaultValue={this.props.value}
 				placeholder={this.props.default}
 				value={this.props.value}
 				onChange={this.onChange.bind(this)}
