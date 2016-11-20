@@ -1,6 +1,6 @@
 import React from 'react'
 import inputStyle from './input.js'
-import { Popover } from 'antd'
+import { Popover,InputNumber } from 'antd'
 
 /*** Number fields with support for min, max and units and documentation*/
 class NumberField extends React.Component {
@@ -35,15 +35,18 @@ class NumberField extends React.Component {
 
 		return <div style={inputStyle.property}>
 			<label style={inputStyle.label}>{this.props.name}</label>
-			<Popover placement="" content={content} title="Title">
-			<input
-				style={inputStyle.input}
-				type="number"
+			<Popover placement="right" content={content} title="Title" trigger="click">
+			<InputNumber
+				min={this.props.min} 
+				max={this.props.max}
+				defaultValue={this.props.value}
+				step={0.1}
 				name={this.props.name}
 				placeholder={this.props.default}
-				value={this.props.value}
 				onChange={this.onChange.bind(this)}
 			/>
+
+			
 			</Popover>
 		</div>
 	}
