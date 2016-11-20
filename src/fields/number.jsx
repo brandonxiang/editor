@@ -1,19 +1,51 @@
 import React from 'react'
 import inputStyle from './input.js'
-import { Popover,InputNumber } from 'antd'
+import { Popover,InputNumber,Form } from 'antd'
+const FormItem = Form.Item;
+
+
+
 
 /*** Number fields with support for min, max and units and documentation*/
 class NumberField extends React.Component {
 	static propTypes = {
-    onChange: React.PropTypes.func.isRequired,
+		onChange: React.PropTypes.func.isRequired,
 		name: React.PropTypes.string.isRequired,
-    value: React.PropTypes.number,
-    default: React.PropTypes.number,
-    unit: React.PropTypes.string,
-    min: React.PropTypes.number,
-    max: React.PropTypes.number,
-    doc: React.PropTypes.string,
-  }
+		value: React.PropTypes.number,
+		default: React.PropTypes.number,
+		unit: React.PropTypes.string,
+		min: React.PropTypes.number,
+		max: React.PropTypes.number,
+		doc: React.PropTypes.string
+	}
+    
+	state = {
+		number: {
+		value: this.props.value,
+		},
+	};
+    
+    validatePrimeNumber = (number) =>{
+	if (number<= this.props.max && number>= this.props.min) {
+		return {
+		validateStatus: 'success',
+		errorMsg: null,
+		};
+	}
+	return {
+		validateStatus: 'error',
+		errorMsg: 'The opacity is between 0 and 1!',
+	};
+	}
+
+    handleNumberChange = (value) =>{
+		this.setState({
+			number:{
+				...validatePrimeNumber(value),
+				value,
+			},
+		});
+	}
 
 	onChange(e) {
 		const value = parseFloat(e.target.value)
@@ -33,8 +65,20 @@ class NumberField extends React.Component {
 			</div>
 			);
 
-		return <div style={inputStyle.property}>
-			<label style={inputStyle.label}>{this.props.name}</label>
+		const formItemLayout = {
+			labelCol: { span: 10 },
+			wrapperCol: { span: 12 },
+		};
+        const number = this.state.number;
+		const tips = '';
+
+		return <Form horizontal>
+		 <FormItem
+		 {...formItemLayout}
+		 label={this.props.name}
+		 validateStatus={number.validateStatus}
+		 help={number.errorMsg||null}
+		 >
 			<Popover placement="right" content={content} title="Title" trigger="click">
 			<InputNumber
 				min={this.props.min} 
@@ -43,12 +87,13 @@ class NumberField extends React.Component {
 				step={0.1}
 				name={this.props.name}
 				placeholder={this.props.default}
-				onChange={this.onChange.bind(this)}
+				onChange={this.handleNumberChange.bind(this)}
 			/>
 
 			
 			</Popover>
-		</div>
+			</FormItem>
+		</Form>
 	}
 }
 
