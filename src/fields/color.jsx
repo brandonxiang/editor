@@ -6,8 +6,7 @@ import { ChromePicker } from 'react-color'
 class ColorField extends React.Component {
   state = {
 	   displayColorPicker: false,
-
-		value:'#e21341'
+	   value:this.props.value
   }
 
 	constructor(props) {
@@ -16,7 +15,11 @@ class ColorField extends React.Component {
 	}
 
 	handleChange = (color) => {
-		 this.setState({value:color.hex})
+		this.setState({value:color.hex})
+
+	    // var value = color.hex
+		// return this.props.onChange(value === "" ? null : value)
+
 	};
 
 	handleClick = () => {
@@ -36,6 +39,7 @@ class ColorField extends React.Component {
   }
 
 	onChange(e) {
+		console.log(e)
 		const value = e.target.value
 		return this.props.onChange(value === "" ? null : value)
 	}
@@ -59,7 +63,7 @@ class ColorField extends React.Component {
 				name={this.props.name}
 				placeholder={this.props.default}
 				value={this.state.value}
-				onChange={this.onChange.bind(this) }
+				 onChange={this.onChange.bind(this) }
 				onClick ={ this.handleClick }
 				/>
 			{this.state.displayColorPicker ? < div style = { popover } >
