@@ -89,8 +89,6 @@ class NumberField extends React.Component {
 				placeholder={this.props.default}
 				onChange={this.handleNumberChange.bind(this)}
 			/>
-
-			
 			</Popover>
 			</FormItem>
 		</Form>

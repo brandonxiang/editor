@@ -1,6 +1,7 @@
 import React from 'react'
 import inputStyle from './input.js'
 import { ChromePicker } from 'react-color'
+import {Popover} from 'antd'
 
 /*** Number fields with support for min, max and units and documentation*/
 class ColorField extends React.Component {
@@ -31,11 +32,11 @@ class ColorField extends React.Component {
 	};
 
 	static propTypes = {
-    onChange: React.PropTypes.func.isRequired,
+        onChange: React.PropTypes.func.isRequired,
 		name: React.PropTypes.string.isRequired,
-    value: React.PropTypes.string,
-    default: React.PropTypes.number,
-    doc: React.PropTypes.string,
+        value: React.PropTypes.string,
+        default: React.PropTypes.number,
+        doc: React.PropTypes.string,
   }
 
 	onChange(e) {
@@ -45,6 +46,9 @@ class ColorField extends React.Component {
 	}
 
 	render() {
+		const content = (
+			< ChromePicker color={ this.state.value } onChange={ this.handleChange }/ >
+		);
 		const popover = {
 			position: 'absolute',
 			zIndex: '2',
@@ -58,6 +62,8 @@ class ColorField extends React.Component {
 		}
 		return <div style={inputStyle.property}>
 			<label style={inputStyle.label}>{this.props.name}</label>
+			
+			<Popover placement="right" content={content}  trigger="click">
 			<input
 				style={inputStyle.input}
 				name={this.props.name}
@@ -66,11 +72,8 @@ class ColorField extends React.Component {
 				 onChange={this.onChange.bind(this) }
 				onClick ={ this.handleClick }
 				/>
-			{this.state.displayColorPicker ? < div style = { popover } >
-        < div style = { cover }
-					onClick = { this.handleClose }/>
-				< ChromePicker color={ this.state.value } onChange={ this.handleChange }/ >
-        < /div>: null }
+			</Popover>
+			
 			</div>
 	}
 }
