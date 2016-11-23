@@ -30,10 +30,15 @@ class SpecField extends React.Component {
 					value={this.props.value}
 					name={this.props.fieldName}
 					default={this.props.fieldSpec.default}
+<<<<<<< HEAD
 					// min={this.props.fieldSpec.min}
 					// max={this.props.fieldSpec.max}
 					min = {0}
 					max = {1}
+=======
+          min={this.props.fieldSpec.min}
+					max={this.props.fieldSpec.max}
+>>>>>>> c31760da9fd9101d820e275a901bd6e14350e30f
 					unit={this.props.fieldSpec.unit}
 					doc={this.props.fieldSpec.doc}
 				/>
