@@ -1,6 +1,6 @@
 import React from 'react'
-import inputStyle from './input.js'
 import { Popover,InputNumber,Form } from 'antd'
+import Pop from './pop'
 const FormItem = Form.Item;
 
 
@@ -24,28 +24,6 @@ class NumberField extends React.Component {
 		value: this.props.value,
 		},
 	};
-    
-    validatePrimeNumber = (number) =>{
-	if (number<= this.props.max && number>= this.props.min) {
-		return {
-		validateStatus: 'success',
-		errorMsg: null,
-		};
-	}
-	return {
-		validateStatus: 'error',
-		errorMsg: 'The opacity is between 0 and 1!',
-	};
-	}
-
-    handleNumberChange = (value) =>{
-		this.setState({
-			number:{
-				...validatePrimeNumber(value),
-				value,
-			},
-		});
-	}
 
 	onChange(e) {
 		const value = parseFloat(e.target.value)
@@ -65,33 +43,23 @@ class NumberField extends React.Component {
 			</div>
 			);
 
-		const formItemLayout = {
-			labelCol: { span: 10 },
-			wrapperCol: { span: 12 },
-		};
         const number = this.state.number;
-		const tips = '';
 
-		return <Form horizontal>
-		 <FormItem
-		 {...formItemLayout}
-		 label={this.props.name}
-		 validateStatus={number.validateStatus}
-		 help={number.errorMsg||null}
-		 >
-			<Popover placement="right" content={content} title="Title" trigger="click">
-			<InputNumber
+         
+		const input = (<InputNumber
 				min={this.props.min} 
 				max={this.props.max}
 				defaultValue={this.props.value}
 				step={0.1}
 				name={this.props.name}
 				placeholder={this.props.default}
-				onChange={this.handleNumberChange.bind(this)}
-			/>
-			</Popover>
-			</FormItem>
-		</Form>
+				onChange={this.onChange.bind(this)}
+			/>)
+		return <Pop
+		 name={this.props.name}
+		 content={content}
+		 input={input}
+		/>
 	}
 }
 

@@ -1,5 +1,6 @@
 import React from 'react'
-import inputStyle from './input.js'
+import Pop from './pop'
+import { Input } from 'antd';
 
 /*** Number fields with support for min, max and units and documentation*/
 class StringField extends React.Component {
@@ -17,16 +18,25 @@ static propTypes = {
 	}
 
 render() {
-	return <div style={inputStyle.property}>
-			<label style={inputStyle.label}>{this.props.name}</label>
-			<input
-				style={inputStyle.input}
+  const content =(<div>
+				<p>Content</p>
+				<p>Content</p>
+			</div>)
+
+  const input = (<Input
 				name={this.props.name}
 				placeholder={this.props.default}
 				value={this.props.value ? this.props.value : ""}
 				onChange={this.onChange.bind(this)}
-			/>
-		</div>
+			/>)
+
+	return <Pop
+		 name={this.props.name}
+		 content={content}
+		 input={input}
+		/>
+
+
 	}
 }
 

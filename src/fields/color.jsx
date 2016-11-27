@@ -1,7 +1,6 @@
 import React from 'react'
-import inputStyle from './input.js'
 import { ChromePicker } from 'react-color'
-import {Popover} from 'antd'
+import {Popover, Input} from 'antd'
 import Pop from './pop.jsx'
 
 
@@ -49,10 +48,9 @@ class ColorField extends React.Component {
 
 	render() {
 		const content = (
-			< ChromePicker color={ this.state.value } onChange={ this.handleChange }/ >
+			<ChromePicker color={ this.state.value } onChange={ this.handleChange }/ >
 		);
-		const input =(<input
-				
+		const input =(<Input
 				name={this.props.name}
 				placeholder={this.props.default}
 				value={this.state.value}

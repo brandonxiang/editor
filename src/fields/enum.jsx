@@ -1,5 +1,8 @@
 import React from 'react'
-import inputStyle from './input.js'
+import { Select} from 'antd'
+import Pop from './pop'
+const Option = Select.Option;
+
 
 class EnumField extends React.Component {
 	static propTypes = {
@@ -15,20 +18,36 @@ class EnumField extends React.Component {
 	}
 
 	render() {
+     const content = (
+			<div>
+				<p>Content</p>
+				<p>Content</p>
+			</div>
+			);
+    
+		
+    const defaultValue  = this.props.value||null;
+		
+
 		const options = this.props.allowedValues.map(val => {
-			return <option key={val} value={val}>{val}</option>
+			return <Option key={val} value={val}>{val}</Option>
 		})
 
-		return <div style={inputStyle.property}>
-			<label style={inputStyle.label}>{this.props.name}</label>
-			<select
-				style={inputStyle.select}
-				value={this.props.value}
+		const input = (<Select 
+				defaultValue={defaultValue}
 				onChange={this.onChange.bind(this)}
 			>
 				{options}
-			</select>
-		</div>
+			</Select>)
+
+		return <Pop
+		 name={this.props.name}
+		 content={content}
+		 input={input}
+		/>
+
+
+
 	}
 }
 
