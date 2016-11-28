@@ -5,6 +5,7 @@ import NumberField from './number'
 import EnumField from './enum'
 import ColorField from './color'
 import StringField from './string'
+import BooleanField from './boolean'
 
 class SpecField extends React.Component {
 	static propTypes = {
@@ -58,6 +59,15 @@ class SpecField extends React.Component {
 					onChange={this.onValueChanged.bind(this, this.props.fieldName)}
 					value={this.props.value}
 					name={this.props.fieldName}
+					doc={this.props.fieldSpec.doc}
+				/>
+			)
+			case 'boolean':return(
+				<BooleanField
+				   onChange={this.onValueChanged.bind(this, this.props.fieldName)}
+					value={this.props.value}
+					name={this.props.fieldName}
+					default={this.props.fieldSpec.default}
 					doc={this.props.fieldSpec.doc}
 				/>
 			)

@@ -6,7 +6,7 @@ function onChange(checked) {
     console.log('switch to ${checked}');
 }
 
-class boolean extends React.Component{
+class BooleanField extends React.Component{
     static propTypes = {
         onChange: React.PropTypes.func.isRequired,
         name: React.PropTypes.string.isRequired,
@@ -33,4 +33,4 @@ class boolean extends React.Component{
     }
 }
 
-export default boolean;
+export default BooleanField
