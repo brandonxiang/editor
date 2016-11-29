@@ -2,7 +2,7 @@ import React from 'react'
 import { Popover,InputNumber,Form } from 'antd'
 import Pop from './pop'
 const FormItem = Form.Item;
-
+import SliderNum from './SliderNum'
 
 
 
@@ -46,7 +46,7 @@ export default class NumberField extends React.Component {
         const number = this.state.number;
 
          
-		const input = (<InputNumber
+		const input = (<SliderNum
 				min={this.props.min} 
 				max={this.props.max}
 				defaultValue={this.props.value}
