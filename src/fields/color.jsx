@@ -35,7 +35,7 @@ export default class ColorField extends React.Component {
 	static propTypes = {
         onChange: React.PropTypes.func.isRequired,
 		name: React.PropTypes.string.isRequired,
-        value: React.PropTypes.string,
+        value: React.PropTypes.object,
         default: React.PropTypes.number,
         doc: React.PropTypes.string,
   }
@@ -72,7 +72,7 @@ export default class ColorField extends React.Component {
 		name={this.props.name}
 		content={content}
 		input={input}
-		tips={this.props.doc}	
+		// tips={this.props.doc}	
 		/>
 		
 	}

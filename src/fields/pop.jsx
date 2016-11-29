@@ -25,7 +25,7 @@ export default class Pop extends React.Component{
           {this.props.name}
           <Tooltip title={this.props.tips}>
                <Icon type="question-circle-o" />
-             </Tooltip>
+          </Tooltip>
           </span>
         )}
         >

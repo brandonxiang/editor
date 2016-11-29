@@ -1,11 +1,12 @@
 import React from 'react'
 import Immutable from 'immutable'
-import GlSpec from 'mapbox-gl-style-spec/reference/latest.min.js'
+import GlSpec from 'mapbox-gl-style-spec/reference/latest.js'
 import NumberField from './number'
 import EnumField from './enum'
 import ColorField from './color'
 import StringField from './string'
 import BooleanField from './boolean'
+import ArrayField from './array'
 
 class SpecField extends React.Component {
 	static propTypes = {
@@ -25,7 +26,9 @@ class SpecField extends React.Component {
 
 	render() {
 		switch(this.props.fieldSpec.type) {
-			case 'number': return (
+			case 'number': 
+			// console.log(this.props);
+			   return (
 				<NumberField
 					onChange={this.onValueChanged.bind(this, this.props.fieldName)}
 					value={this.props.value}
@@ -69,6 +72,13 @@ class SpecField extends React.Component {
 					name={this.props.fieldName}
 					default={this.props.fieldSpec.default}
 					doc={this.props.fieldSpec.doc}
+				/>
+			)
+			case 'array':
+			   return(
+				<ArrayField
+				    value={this.props.value}
+					name={this.props.fieldName}
 				/>
 			)
 			default: return null
