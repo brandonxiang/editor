@@ -3,7 +3,7 @@ import Pop from './pop'
 import { Input } from 'antd';
 
 /*** Number fields with support for min, max and units and documentation*/
-class StringField extends React.Component {
+export default class StringField extends React.Component {
 static propTypes = {
     onChange: React.PropTypes.func.isRequired,
 		name: React.PropTypes.string.isRequired,
@@ -34,10 +34,7 @@ render() {
 		 name={this.props.name}
 		 content={content}
 		 input={input}
+		 tips={this.props.doc}
 		/>
-
-
 	}
 }
-
-export default StringField

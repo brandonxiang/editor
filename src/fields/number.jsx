@@ -7,7 +7,7 @@ const FormItem = Form.Item;
 
 
 /*** Number fields with support for min, max and units and documentation*/
-class NumberField extends React.Component {
+export default class NumberField extends React.Component {
 	static propTypes = {
 		onChange: React.PropTypes.func.isRequired,
 		name: React.PropTypes.string.isRequired,
@@ -59,8 +59,7 @@ class NumberField extends React.Component {
 		 name={this.props.name}
 		 content={content}
 		 input={input}
+	     tips={this.props.doc}
 		/>
 	}
 }
-
-export default NumberField

@@ -4,7 +4,7 @@ import Pop from './pop'
 const Option = Select.Option;
 
 
-class EnumField extends React.Component {
+export default class EnumField extends React.Component {
 	static propTypes = {
     onChange: React.PropTypes.func.isRequired,
 		name: React.PropTypes.string.isRequired,
@@ -44,11 +44,7 @@ class EnumField extends React.Component {
 		 name={this.props.name}
 		 content={content}
 		 input={input}
+		tips={this.props.doc}	
 		/>
-
-
-
 	}
 }
-
-export default EnumField

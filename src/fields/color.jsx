@@ -5,7 +5,7 @@ import Pop from './pop.jsx'
 
 
 /*** Number fields with support for min, max and units and documentation*/
-class ColorField extends React.Component {
+export default class ColorField extends React.Component {
     state = {
 	   displayColorPicker: false,
 	   value:this.props.value
@@ -72,9 +72,8 @@ class ColorField extends React.Component {
 		name={this.props.name}
 		content={content}
 		input={input}
+		tips={this.props.doc}	
 		/>
 		
 	}
 }
-
-export default ColorField
