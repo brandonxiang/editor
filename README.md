@@ -18,5 +18,6 @@ A extension for Maputnik Editor with ant design component
 
 ## TODO
 
+- Add a Doc Pop 
 - Support zoom level specific values
 - Filter data from sources
