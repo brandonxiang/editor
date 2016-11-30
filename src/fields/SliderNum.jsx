@@ -11,7 +11,7 @@ class SliderNum extends React.Component{
   constructor(props) {
     super(props)
     this.state = {
-      inputValue: 1,
+      inputValue: this.props.value,
     }
 }
 

@@ -3,7 +3,7 @@ import { Popover,InputNumber,Form } from 'antd'
 import Pop from './pop'
 const FormItem = Form.Item;
 import SliderNum from './SliderNum'
-
+import ZoomLevel from './ZoomLevel'
 
 
 /*** Number fields with support for min, max and units and documentation*/
@@ -36,17 +36,12 @@ export default class NumberField extends React.Component {
 	}
 
 	render() {
-         const content = (
-			<div>
-				<p>Content</p>
-				<p>Content</p>
-			</div>
-			);
+         const content = <ZoomLevel/>
 
         const number = this.state.number;
 
          
-		const input = (<SliderNum
+		const input = (<InputNumber
 				min={this.props.min} 
 				max={this.props.max}
 				defaultValue={this.props.value}

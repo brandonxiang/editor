@@ -20,6 +20,7 @@
     "antd": "^2.4.2",
     "file-saver": "^1.3.2",
     "immutable": "^3.8.1",
+    "lodash": "^4.17.2",
     "mapbox-gl": "^0.24.0",
     "mapbox-gl-style-spec": "mapbox/mapbox-gl-style-spec#83b1a3e5837d785af582efd5ed1a212f2df6a4ae",
     "randomcolor": "^0.4.4",
