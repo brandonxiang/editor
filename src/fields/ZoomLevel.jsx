@@ -116,14 +116,14 @@ class StopItem extends React.Component{
     return (
       <li>
       <Row>
-        <Col span={9} offset={1}>
+        <Col span={10}>
         <SliderNum value={this.props.zoom} min={1} max={22} step={1}/>
         </Col>
-        <Col span={9} offset={1}>
+        <Col span={10}>
         <SliderNum value={this.props.value} step={1}/>
         </Col>
         <Col span={4}>
-          <button type="button" className="btn btn-xs close" onClick={this.deleteTask.bind(this)} ref="deleteBtn">删除</button>
+          <Button type="primary" onClick={this.deleteTask.bind(this)} icon="delete" ref="deleteBtn">删除</Button>
         </Col>
         </Row>
       </li>
