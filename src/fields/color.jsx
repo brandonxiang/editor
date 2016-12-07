@@ -72,7 +72,7 @@ export default class ColorField extends React.Component {
 		name={this.props.name}
 		content={content}
 		input={input}
-		// tips={this.props.doc}	
+		 tips={this.props.doc}	
 		/>
 		
 	}

@@ -6,13 +6,22 @@ import _ from 'lodash'
 
 
 export default class ZoomLevel extends React.Component{
-   state =  {
-      data: [
-        {"id": "0001", "zoom":7, "value": 0.25},
-        {"id": "0002", "zoom":20, "value": 30},
-      ]
-    }
+ 
 
+   constructor(props){
+      super(props)
+      const stops = this.props.stops
+      var data = []
+      for(var i in stops){
+        data.push({"id":i,"zoom":stops[i][0],"value":stops[i][1]})
+      }
+      
+      this.state={
+        data:data
+      }
+      console.log(this.state.data);
+   }
+   
   handleTaskDelete(taskId) {
     var data = this.state.data;
     data = data.filter(function(task) {
@@ -47,17 +56,20 @@ export default class ZoomLevel extends React.Component{
 
 
   handleSubmit() {
+
     var data = this.state.data;
     var id = this.generateId();
-
-    data = data.concat([{"id": id, "zoom": data[0].zoom+1, "value": data[0].value}]);
+    
+    var zoom  = data.length>0? data[0].zoom+1: 1;
+    var value = data.length>0? data[0].value: 1;
+    data = data.concat([{"id": id, "zoom": zoom, "value": value}]);
     data = this.sortByZoom(data);
     this.setState({data});
 
   }
 
   render() {
-
+    console.log(this.props.stops)
 
     return (
       <div>
@@ -111,7 +123,6 @@ class StopItem extends React.Component{
   }
 
   render() {
-    console.log(this.props.zoom);
 
     return (
       <li>
@@ -123,7 +134,7 @@ class StopItem extends React.Component{
         <SliderNum value={this.props.value} step={1}/>
         </Col>
         <Col span={4}>
-          <Button type="primary" onClick={this.deleteTask.bind(this)} icon="delete" ref="deleteBtn">删除</Button>
+          <Button type="primary" onClick={this.deleteTask.bind(this)} icon="delete" ref="deleteBtn">delete</Button>
         </Col>
         </Row>
       </li>

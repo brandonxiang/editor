@@ -2,11 +2,11 @@ import React from 'react'
 import { Slider, InputNumber, Row, Col } from 'antd';
 
 class SliderNum extends React.Component{
-  static defaultProps = {
-    min:1,
-    max:10
-  }
-
+  static propTypes = {
+		min: React.PropTypes.number,
+		max: React.PropTypes.number,
+		value: React.PropTypes.number
+	}
 
   constructor(props) {
     super(props)
@@ -30,7 +30,7 @@ class SliderNum extends React.Component{
           />
         </Col>
 
-        <Col span={8} offset={0}>
+        <Col span={8}>
           <Slider min={this.props.min} max={this.props.max} onChange={this.onChange.bind(this)} value={this.state.inputValue} />
         </Col>
       </Row>
