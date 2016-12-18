@@ -29,7 +29,7 @@ export default class NumberField extends React.Component {
 			}
 		}else{
 			const val = Immutable.Map(this.props.value).toJS()
-
+            
 			this.state = {
 				value: val,
 				base: val.base,
@@ -51,7 +51,10 @@ export default class NumberField extends React.Component {
 	}
 
 	render() {
-		const content = <ZoomLevel stops={this.state.stops}/>
+		const content = <ZoomLevel
+		 stops={this.state.stops} 
+		 min={this.props.min}
+		 max={this.props.max}/>
 
 		const input = (<InputNumber
 			min={this.props.min}

@@ -69,13 +69,14 @@ export default class ZoomLevel extends React.Component{
   }
 
   render() {
-    console.log(this.props.stops)
 
     return (
       <div>
         <StopList data={this.state.data}
           deleteTask={this.handleTaskDelete.bind(this)}
           toggleComplete={this.handleToggleComplete.bind(this)}
+          min={this.props.min}
+          max={this.props.max}
           />
         <NewBtn submitTask={this.handleSubmit.bind(this)} />
       </div>
@@ -93,7 +94,9 @@ class StopList extends React.Component{
           zoom={listItem.zoom}
           value={listItem.value}
           deleteTask={this.props.deleteTask}
-          toggleComplete={this.props.toggleComplete} />
+          toggleComplete={this.props.toggleComplete}
+          min={this.props.min}
+          max={this.props.max} />
       )
     }, this);
 
@@ -131,7 +134,7 @@ class StopItem extends React.Component{
         <SliderNum value={this.props.zoom} min={1} max={22} step={1}/>
         </Col>
         <Col span={10}>
-        <SliderNum value={this.props.value} step={1}/>
+        <SliderNum value={this.props.value} min={this.props.min} max= {this.props.max} step={1}/>
         </Col>
         <Col span={4}>
           <Button type="primary" onClick={this.deleteTask.bind(this)} icon="delete" ref="deleteBtn">delete</Button>

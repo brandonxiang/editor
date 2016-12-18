@@ -14,6 +14,7 @@ A extension for Maputnik Editor with ant design component
 - Add two more datatype for spec.js ( boolean and array )
 - Boolean component with Switcher
 - Add a Doc Tooltip for pop.js 
+- Support zoom level specific values
 
 
 ## TODO
