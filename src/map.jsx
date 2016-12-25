@@ -70,7 +70,7 @@ export class Map extends React.Component {
 	componentDidMount() {
 		MapboxGl.accessToken = this.props.accessToken
 
-		const map = new MapboxGl.Map({
+		const map = this.map = new MapboxGl.Map({
 			container: this.container,
 			style: style.toJSON(this.props.mapStyle),
 			center: [this.state.lng, this.state.lat], // starting position
@@ -89,6 +89,7 @@ export class Map extends React.Component {
 
 			self.setState({lat: lat});
 			self.setState({lng: lng});
+			console.log(self.state.lat)
 		})
 
 	    map.on("zoomend",function(){
@@ -108,6 +109,7 @@ export class Map extends React.Component {
 	}
 	
     zoomIn(){
+		console.log("zoom in")
 		this.map.zoomIn()
 	}
 

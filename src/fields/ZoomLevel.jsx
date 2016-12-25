@@ -19,7 +19,6 @@ export default class ZoomLevel extends React.Component{
       this.state={
         data:data
       }
-      console.log(this.state.data);
    }
    
   handleTaskDelete(taskId) {
@@ -77,6 +76,7 @@ export default class ZoomLevel extends React.Component{
           toggleComplete={this.handleToggleComplete.bind(this)}
           min={this.props.min}
           max={this.props.max}
+          onChange={this.props.onChange}
           />
         <NewBtn submitTask={this.handleSubmit.bind(this)} />
       </div>
@@ -85,6 +85,7 @@ export default class ZoomLevel extends React.Component{
 }
 
 class StopList extends React.Component{
+  
   render() {
     var taskList = this.props.data.map(function(listItem) {
       return (

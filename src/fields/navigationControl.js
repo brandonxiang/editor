@@ -76,11 +76,11 @@ export default class NavigationControl extends Component{
             <Row>
             <Col span={8}>
             <div>Latitude</div>
-            <InputNumber value={this.props.lat}/>
+            <InputNumber value={this.props.lat} onchange={this.props.onLatChange}/>
             </Col>
             <Col span={8}>
             <div>Longitude</div>
-            <InputNumber value={this.props.lng} />
+            <InputNumber value={this.props.lng} onChange={this.props.onLngChange}/>
             </Col>
             </Row>
         </div>
